@@ -16,11 +16,11 @@ public class HomeController {
     @GetMapping()
     public Object index(@RequestParam Optional<String> slack_name, @RequestParam Optional<String> track) {
 
-        slack_name = slack_name.isPresent() ? slack_name : Optional.of("Adewuyi A");
+        slack_name = slack_name.isPresent() ? slack_name : Optional.of("HNGx");
         track = track.isPresent() ? track : Optional.of("Backend");
         // Get the current UTC time
         Instant currentInstant = Instant.now();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'");
 
         // Format the current UTC time as "2023-08-21T15:04:05Z"
         String formattedUTC = formatter.format(currentInstant.atZone(ZoneOffset.UTC));
@@ -34,10 +34,10 @@ public class HomeController {
         HashMap<String, Object> data = new HashMap<>();
         data.put("slack_name", slack_name);
         data.put("current_day", currentDay);
-        data.put("utc_time", (formattedUTC + "Z").toUpperCase());
+        data.put("utc_time", (formattedUTC).toUpperCase());
         data.put("track", track);
-        data.put("github_file_url", "https://github.com/username/repo/blob/main/file_name.ext");
-        data.put("github_repo_url", "https://github.com/username/repo");
+        data.put("github_file_url", "https://github.com/harmlessprince/taofeeq-java-stage-one/blob/main/src/main/java/com/hngstageone/HngStatgeOne/HomeController.java");
+        data.put("github_repo_url", "https://github.com/harmlessprince/taofeeq-java-stage-one");
         data.put("status_code", 200);
 
         return data;
