@@ -2,6 +2,7 @@ package com.hngstageone.HngStatgeOne;
 
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -11,9 +12,10 @@ import java.time.format.TextStyle;
 import java.util.*;
 
 @RestController
+@RequestMapping("/api")
 public class HomeController {
 
-    @GetMapping()
+    @GetMapping("")
     public Object index(@RequestParam Optional<String> slack_name, @RequestParam Optional<String> track) {
 
         slack_name = slack_name.isPresent() ? slack_name : Optional.of("HNGx");
